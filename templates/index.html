@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meraki Uplink Usage</title>
+</head>
+<body>
+    <h1>Meraki Uplink Usage</h1>
+    <h2>Serial Numbers:</h2>
+    <ul>
+        {% for serial in serials %}
+        <li><a href="{{ url_for('graphs', serial=serial) }}">{{ serial }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
