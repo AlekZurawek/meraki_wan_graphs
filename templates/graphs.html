@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meraki Graphs</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Meraki Graphs for Serial {{ serial }}</h1>
+    <form action="" method="POST">
+        <label for="start_datetime">Start datetime:</label>
+        <input type="datetime-local" id="start_datetime" name="start_datetime" required>
+        <label for="end_datetime">End datetime:</label>
+        <input type="datetime-local" id="end_datetime" name="end_datetime" required>
+        <button type="submit">Update</button>
+    </form>
+    {% set ns = namespace(idx=0) %}
+    {% for graph in all_graphs %}
+        <div id="graph-{{ ns.idx }}" style="width:100%;height:500px;"></div>
+        <script>
+            Plotly.newPlot('graph-{{ ns.idx }}', {{ graph|safe }});
+        </script>
+        {{ all_tables[ns.idx]|safe }}
+        {% set ns.idx = ns.idx + 1 %}
+    {% endfor %}
+</body>
+</html>
