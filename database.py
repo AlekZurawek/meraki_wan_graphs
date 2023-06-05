@@ -12,7 +12,7 @@ ORGANIZATION_ID = "your org"
 URL = f"https://api.meraki.com/api/v1/organizations/{ORGANIZATION_ID}/appliance/uplinks/usage/byNetwork?timespan=60"
 
 # Database setup
-conn = sqlite3.connect("/home/admin-az/automation/production/meraki_graphs/meraki_data.db")
+conn = sqlite3.connect("meraki_data.db")
 cursor = conn.cursor()
 
 cursor.execute(
